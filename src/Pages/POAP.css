@@ -1,0 +1,24 @@
+.UI input, textarea {
+    min-height: 1em;
+    outline: 0;
+    border: 1px solid rgb(0, 0, 0);
+    vertical-align: initial;
+    background: rgba(197, 194, 194, 0.9);
+    color: rgb(71, 71, 71);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: .78571429em .5em;
+    font-weight: 800;
+    line-height: 2em;
+    text-decoration: none;
+    border-radius: .58571429rem;
+  }
+
+  .UI {
+    position: absolute; 
+    top: 40%;
+    transform: translate(0, -40%);
+    text-align: left;
+    margin-left: 10%;
+  }
+  
