@@ -76,7 +76,7 @@ export class POAP extends Component {
             <br></br>
             <input type="text" value={this.state.authToken} onChange={this.onAuthChange} placeholder="Authorization Token" />
             <br></br>
-            <textarea type="text" maxLength="100000" rows="10" cols="50" value={this.state.codes} onChange={this.onCodesChange} placeholder="POAP Codes"></textarea>
+            <textarea type="text" maxLength="1000000" rows="10" cols="50" value={this.state.codes} onChange={this.onCodesChange} placeholder="POAP Codes"></textarea>
             <br></br>
             <input type="submit" value={this.state.submit} />
           </form>
