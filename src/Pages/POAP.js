@@ -1,9 +1,10 @@
 import axios from "axios";
 import React, {Component} from "react";
 import './POAP.css'
+import BlockchainContext from "../context/BlockchainContext";
 
 
-export class POAP extends Component {
+class POAPClass extends Component {
 
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ export class POAP extends Component {
       codes: '',
       result: '',
       submit: 'Submit',
+      accounts: null,
     };
 
     this.onAuthChange = this.onAuthChange.bind(this);
@@ -20,6 +22,10 @@ export class POAP extends Component {
     this.onPOAPIDChange = this.onPOAPIDChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
+  }
+
+  async componentDidMount () {
+    this.setState({ accounts: await this.context.accountsPromise }); 
   }
 
   onPOAPIDChange(event) {
@@ -40,6 +46,7 @@ export class POAP extends Component {
     this.uploadPOAPs(this.state.authToken, this.state.poapID, this.state.codes)
     event.preventDefault();
   }
+
 
   uploadPOAPs(authToken, poapID, codes) {
         let list = codes.split("http://POAP.xyz/claim/")
@@ -71,7 +78,7 @@ export class POAP extends Component {
         return ( 
         <div className="App">
           <form onSubmit={this.handleSubmit} className="UI">
-            <h1 style={{color: '#c7c7c7', fontSize: 50}}>Create POAP Event</h1>
+            <h1 style={{color: "gray", fontSize: 50}}>Create POAP Event</h1>
             <input type="text" value={this.state.poapID} onChange={this.onPOAPIDChange} placeholder="POAP ID"/>
             <br></br>
             <input type="text" value={this.state.authToken} onChange={this.onAuthChange} placeholder="Authorization Token" />
@@ -84,3 +91,7 @@ export class POAP extends Component {
         )
     }
 }
+
+POAPClass.contextType = BlockchainContext;
+
+export default POAPClass;

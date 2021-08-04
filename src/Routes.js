@@ -1,13 +1,13 @@
 import React from 'react';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
-import { POAP } from './Pages/POAP'
+import POAPClass from './Pages/POAP'
 
 export function Routes() {
     return (
         <BrowserRouter>
             <Switch>
                 <Route exact path="/">                
-                    <POAP/>
+                    <POAPClass/>
                 </Route>
                 <Route path="/about">
                     
