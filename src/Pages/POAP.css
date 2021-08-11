@@ -22,3 +22,12 @@
     margin-left: 10%;
   }
   
+  .center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 0.1px solid #000000;
+    padding: 10px;
+}
+  

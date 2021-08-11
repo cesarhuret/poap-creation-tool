@@ -2,6 +2,7 @@ import axios from "axios";
 import React, {Component} from "react";
 import './POAP.css'
 import BlockchainContext from "../context/BlockchainContext";
+import { Button, Card } from "react-bootstrap";
 
 
 class POAPClass extends Component {
@@ -77,16 +78,23 @@ class POAPClass extends Component {
   render() {
         return ( 
         <div className="App">
-          <form onSubmit={this.handleSubmit} className="UI">
-            <h1 style={{color: "gray", fontSize: 50}}>Create POAP Event</h1>
-            <input type="text" value={this.state.poapID} onChange={this.onPOAPIDChange} placeholder="POAP ID"/>
-            <br></br>
-            <input type="text" value={this.state.authToken} onChange={this.onAuthChange} placeholder="Authorization Token" />
-            <br></br>
-            <textarea type="text" maxLength="1000000" rows="10" cols="50" value={this.state.codes} onChange={this.onCodesChange} placeholder="POAP Codes"></textarea>
-            <br></br>
-            <input type="submit" value={this.state.submit} />
-          </form>
+          <Card className='center' bg="light" style={{width: '40%'}}>
+              <Card.Body>
+                <Card.Title>Create POAP Event</Card.Title>
+                <form onSubmit={this.handleSubmit}>
+                  <div className="mb-3">
+                      <input type="text" value={this.state.poapID} className="form-control" onChange={this.onPOAPIDChange} placeholder="POAP ID" required />
+                    </div>
+                    <div className="mb-3">
+                      <input type="text" value={this.state.authToken} className="form-control" onChange={this.onAuthChange} placeholder="Authorization Token" required />
+                    </div>
+                    <div className="mb-3">
+                    <textarea type="text" maxLength="1000000" rows="10" className="form-control" cols="50" value={this.state.codes} onChange={this.onCodesChange} placeholder="POAP Codes" required />
+                    </div>
+                  <Button type="submit">Submit</Button>
+                </form>
+              </Card.Body>
+          </Card>
         </div>
         )
     }
