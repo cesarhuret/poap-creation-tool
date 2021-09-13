@@ -76,7 +76,7 @@ class POAPClass extends Component {
         <div className="App">
           <Row className='justify-content-center' style={{maxWidth: '100%'}}>
                     <Col xs={12} md={9} lg={8} xl={8}>
-                        <Card className='round my-5 colored' bg='dark' style={{color: 'white'}}>
+                        <Card className='round my-5 colored' style={{color: 'white', backgroundColor: 'rgba(20, 50, 150, 0.3)'}}>
                             <Card.Body>
                                 <div className='p-2'>
                                     <div className='text-left'>
