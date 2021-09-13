@@ -12,6 +12,7 @@ class POAPClass extends Component {
     this.state = {
       poapID: '',
       authToken: '',
+      testing: false,
       codes: '',
       result: '',
       submit: 'Submit',
@@ -45,29 +46,20 @@ class POAPClass extends Component {
   }
 
 
-  uploadPOAPs(authToken, poapID, codes) {
-        let list = codes.split("http://POAP.xyz/claim/")
-        let text = [];
-        for (let i = 1; i < list.length; i++) {
-          let item = list[i].replace("\n", "")
-          text.push(item);
+  uploadPOAPs(authToken, poapID) {
+        let body = {
+          options: [
+            ["testing", this.state.testing]
+          ]
+
         }
-        const body = {};  
-        axios.post(`https://poapapi.dcl.guru/event/${poapID}`, body, { headers: { 'Authorization': authToken } })
+        axios.patch(`https://poapapi.dcl.guru/event/${poapID}`, body, { headers: { 'Authorization': authToken } })
         .then((response) => {
           console.log(response);
           alert(`${poapID} event was created`);
         }, (error) => {
           console.log(error);
           alert(`${poapID} - an error occurred`);
-        })
-        .then(async () => {
-          await axios.post(`https://poapapi.dcl.guru/addcodes/${poapID}`, { codes: text }, { headers: { 'Authorization': authToken } })
-        })
-        .then((response) => {
-          console.log(response);
-        }, (error) => {
-          console.log(error);
         })
   }
 
@@ -90,7 +82,10 @@ class POAPClass extends Component {
                                           <input type="text" value={this.state.authToken} className="form-control" onChange={this.onAuthChange} placeholder="Authorization Token" style={{background: 'none', border: '1px solid rgb(45, 45, 45)', color: 'white'}} required />
                                         </div>
                                         <div className="mb-3">
-                                        <textarea type="text" maxLength="10000000" rows="10" className="form-control" cols="50" value={this.state.codes} onChange={this.onCodesChange} style={{background: 'none', border: '1px solid rgb(45, 45, 45)', color: 'white'}} placeholder="POAP Codes" required />
+                                        { this.state.testing 
+                                            ? <Button variant='danger' onClick={ () => { this.setState({ testing: false})}}>Disable Testing</Button> 
+                                            : <Button variant='success' onClick={ () => { this.setState({ testing: true}) }}>Enable Testing</Button> 
+                                        }
                                         </div>
                                       <Button type="submit">Submit</Button>
                                     </form>

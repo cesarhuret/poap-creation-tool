@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import './App.css';
 import { Routes } from './Routes'
 import { BrowserRouter as Router, } from "react-router-dom";
+import NavComp from "./Pages/Navbar";
 class App extends Component {
   constructor() {
     super();
@@ -17,6 +18,7 @@ class App extends Component {
     return (
       <div className='App'>
         <Router>
+          <NavComp />
           <Routes />
         </Router>
       </div>
