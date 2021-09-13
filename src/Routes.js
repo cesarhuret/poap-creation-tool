@@ -10,11 +10,11 @@ export function Routes() {
                 <Route exact path="/">            
                     <POAPClass/>
                 </Route>
-                <Route path="/edit">
+                {/* <Route path="/edit">
                     
                     <EditPOAP/>
 
-                </Route>
+                </Route> */}
             </Switch>
         </BrowserRouter>
 
