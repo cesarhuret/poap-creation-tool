@@ -2,7 +2,7 @@ import axios from "axios";
 import React, {Component} from "react";
 import './POAP.css'
 import BlockchainContext from "../context/BlockchainContext";
-import { Button, Card } from "react-bootstrap";
+import { Button, Card, Col, Row } from "react-bootstrap";
 
 
 class POAPClass extends Component {
@@ -23,10 +23,6 @@ class POAPClass extends Component {
     this.onPOAPIDChange = this.onPOAPIDChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
 
-  }
-
-  async componentDidMount () {
-    this.setState({ accounts: await this.context.accountsPromise }); 
   }
 
   onPOAPIDChange(event) {
@@ -78,23 +74,31 @@ class POAPClass extends Component {
   render() {
         return ( 
         <div className="App">
-          <Card className='center' bg="light" style={{width: '40%'}}>
-              <Card.Body>
-                <Card.Title>Create POAP Event</Card.Title>
-                <form onSubmit={this.handleSubmit}>
-                  <div className="mb-3">
-                      <input type="text" value={this.state.poapID} className="form-control" onChange={this.onPOAPIDChange} placeholder="POAP ID" required />
-                    </div>
-                    <div className="mb-3">
-                      <input type="text" value={this.state.authToken} className="form-control" onChange={this.onAuthChange} placeholder="Authorization Token" required />
-                    </div>
-                    <div className="mb-3">
-                    <textarea type="text" maxLength="1000000" rows="10" className="form-control" cols="50" value={this.state.codes} onChange={this.onCodesChange} placeholder="POAP Codes" required />
-                    </div>
-                  <Button type="submit">Submit</Button>
-                </form>
-              </Card.Body>
-          </Card>
+          <Row className='justify-content-center' style={{maxWidth: '100%'}}>
+                    <Col xs={12} md={9} lg={8} xl={8}>
+                        <Card className='round my-5 colored' bg='dark' style={{color: 'white'}}>
+                            <Card.Body>
+                                <div className='p-2'>
+                                    <div className='text-left'>
+                                        <h4 className="mb-4" style={{fontWeight: 600}}>Create POAP</h4>
+                                    </div>
+                                    <form onSubmit={this.handleSubmit} style={{color: 'white'}} >
+                                        <div className="mb-3">
+                                          <input type="number" value={this.state.poapID} className="form-control" onChange={this.onPOAPIDChange} placeholder="POAP ID" style={{background: 'none', border: '1px solid rgb(45, 45, 45)', color: 'white'}} required />
+                                        </div>
+                                        <div className="mb-3">
+                                          <input type="text" value={this.state.authToken} className="form-control" onChange={this.onAuthChange} placeholder="Authorization Token" style={{background: 'none', border: '1px solid rgb(45, 45, 45)', color: 'white'}} required />
+                                        </div>
+                                        <div className="mb-3">
+                                        <textarea type="text" maxLength="1000000" rows="10" className="form-control" cols="50" value={this.state.codes} onChange={this.onCodesChange} style={{background: 'none', border: '1px solid rgb(45, 45, 45)', color: 'white'}} placeholder="POAP Codes" required />
+                                        </div>
+                                      <Button type="submit">Submit</Button>
+                                    </form>
+                                </div>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
         </div>
         )
     }
