@@ -12,7 +12,7 @@ class NavComp extends Component {
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="ml-auto">
                                     <Nav.Link className='navlink' href="/">Create</Nav.Link>
-                                    {/* <Nav.Link className='navlink' href="/edit">Edit</Nav.Link> */}
+                                    <Nav.Link className='navlink' href="/edit">Edit</Nav.Link>
                                 </Nav>
                             </Navbar.Collapse>
                         </Container>
